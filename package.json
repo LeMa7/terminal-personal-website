@@ -2,10 +2,9 @@
   "name": "terminal_website",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "gulpfile.js",
   "scripts": {
-    "start": "node app",
-    "postinstall": "gulp default"
+    "build": "gulp build"
   },
   "keywords": [],
   "author": "",
