@@ -1,0 +1,199 @@
+@import "nullstyle.scss";
+@import "adaptive.scss";
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+$terminal_green: #47FFB0;
+
+@mixin test_shadow {
+  text-shadow: 0px 0px 40px rgba(71, 255, 176, 0.5);
+}
+@mixin fullpage {
+  width: 100%;
+  height: 100%;
+}
+@mixin flex_c {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body {
+  font-family: 'VT323', monospace;
+  color: $terminal_green;
+  @include test_shadow;
+  font-size: 43px;
+  background: #000;
+}
+
+main {
+  height: 100%;
+  // background-image: url('../img/bg.jpg');
+}
+
+span, a, img {
+  &::selection {
+    background: $terminal_green;
+    color: white;
+    text-shadow: none;
+  }
+}
+
+.terminal__frame {
+  background-image: url("../img/terminalBodyPage.png");
+  @include fullpage;
+  position: absolute;
+  z-index: 5;
+  background-repeat:no-repeat;
+  background-size: 100% 100%;
+  background-position:center;
+  pointer-events: none;
+}
+
+.terminal__effects::before, .noice, .lines {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+}
+
+.terminal__effects {
+  position: absolute;
+  left: 0;
+  top: 0;
+  @include fullpage;
+  z-index: 3;
+  pointer-events: none;
+
+  &::before {
+    pointer-events: none;
+    will-change: transform;
+    content: " ";
+    height: 20%;
+    top: -20%;
+    background: linear-gradient(rgba(40,64,50,0),rgba(40,64,50,.1));
+    animation: interference 4s ease-in-out 6s infinite forwards;
+  }
+
+}
+
+@keyframes interference {
+  from {
+    top: -20%;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    top: 80%;
+  }
+}
+
+
+
+.noice {
+  background-image: url('../img/noise_min.png');
+  background-blend-mode: overlay;
+  opacity: .2;
+}
+
+.lines {
+  background: linear-gradient(rgba(18,16,16,0) 50%,rgba(0,0,0,.2) 0),linear-gradient(90deg,rgba(255,0,0,.06),rgba(0,255,0,.02),rgba(0,0,255,.06));
+  background-size: 100% 2px,3px 100%;
+  background-position-y: 1px;
+}
+
+.terminal__content {
+  @include fullpage;
+  padding: 60px 190px;
+
+  .terminal__content__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+
+  .content__info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .info__name {
+      font-size:68px;
+      text-align: center;
+      filter: drop-shadow(0px 0px 3px rgba(71, 255, 176, 0.5));
+      margin-bottom: 50px;
+    }
+
+    .info__title {
+      display: flex;
+      align-items: center;
+      margin-top: 30px;
+      &>img {
+        display: flex;
+        align-items: center;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+    }
+
+  }
+
+  .terminal__links {
+    display: flex;
+    align-items: center;
+    li {
+      margin-left: 50px;
+      &:first-child {
+        margin-left: 0;
+      }
+      a {
+        color: $terminal_green;
+        &:hover {
+          text-decoration: underline;     
+        }
+      }
+    }
+  }
+}
+}
+
+.terminal_bg {
+  background-image: radial-gradient(
+    #284032, #15241C
+  );
+  @include fullpage;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+
+.terminal__content__inner::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.terminal__content__inner::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
+
+.terminal__content__inner::-webkit-scrollbar-thumb {
+  background: #47ffb0;
+  border: 0 none #fff;
+  border-radius: 4px;
+}
