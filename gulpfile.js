@@ -1,4 +1,4 @@
-const project_folder = "dist";
+const project_folder = "public";
 const source_folder = "src";
 
 let path = {
@@ -25,7 +25,6 @@ let path = {
 
 const { src, dest } = require('gulp');
 const gulp = require('gulp');
-var server = require('gulp-webserver');
 const browsersync = require('browser-sync').create();
 const fileinclude = require('gulp-file-include');
 const del = require('del');
@@ -49,15 +48,6 @@ function browserSync() {
     port: 3000,
     notify: false,
   })
-}
-
-function server(){
-  return src('dist')	// <-- your app folder
-    .pipe(server({
-      livereload: true,
-      open: true,
-      port: 6000	// set a port to avoid conflicts with other local apps
-    }));
 }
 
 function html() {
@@ -148,8 +138,6 @@ function clean() {
 
 const build = gulp.series(clean, gulp.parallel(js, css, html, images));
 const watch = gulp.parallel(build, watchFiles, browserSync);
-const prod = gulp.series(build, server);
-
 
 exports.images = images;
 exports.js = js;
@@ -158,4 +146,3 @@ exports.html = html;
 exports.build = build;
 exports.watch = watch;
 exports.default = watch;
-exports.prod = prod;
