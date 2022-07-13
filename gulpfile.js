@@ -147,7 +147,7 @@ function clean() {
 
 const build = gulp.series(clean, gulp.parallel(js, css, html, images));
 const watch = gulp.parallel(build, watchFiles, browserSync);
-const prod = gulp.parallel(build, server);
+const prod = gulp.series(build, server);
 
 
 exports.images = images;
