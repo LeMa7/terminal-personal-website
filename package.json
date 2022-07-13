@@ -6,7 +6,7 @@
   "scripts": {
     "build": "gulp build",
     "start": "node server.js",
-    "dev": "gulp watch"
+    "dev": "gulp"
   },
   "keywords": [],
   "author": "",
