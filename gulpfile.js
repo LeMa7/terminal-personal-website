@@ -50,6 +50,15 @@ function browserSync() {
   })
 }
 
+function server(){
+  return src('dist')	// <-- your app folder
+    .pipe(server({
+      livereload: true,
+      open: true,
+      port: 6000	// set a port to avoid conflicts with other local apps
+    }));
+}
+
 function html() {
   return src(path.src.html)
     .pipe(fileinclude())
@@ -138,6 +147,7 @@ function clean() {
 
 const build = gulp.series(clean, gulp.parallel(js, css, html, images));
 const watch = gulp.parallel(build, watchFiles, browserSync);
+const prod = gulp.parallel(build, server);
 
 
 exports.images = images;
@@ -147,3 +157,4 @@ exports.html = html;
 exports.build = build;
 exports.watch = watch;
 exports.default = watch;
+exports.prod = prod;
