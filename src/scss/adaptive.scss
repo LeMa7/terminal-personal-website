@@ -137,13 +137,16 @@
   .terminal__content {
     padding: 70px 30px;
 
-    .terminal__links {
-      flex-direction: row;
-      li {
-        margin-left: 20px;
+    .terminal__content__inner {
 
-        &:first-child {
-          margin-left: 0;
+      .terminal__links {
+        flex-direction: row;
+        li {
+          margin-left: 20px;
+  
+          &:first-child {
+            margin-left: 0;
+          }
         }
       }
     }
@@ -176,13 +179,17 @@
   .terminal__content {
     padding: 70px 30px;
 
-    .terminal__links {
-      flex-direction: row;
-      li {
-        margin-left: 20px;
+    .terminal__content__inner {
 
-        &:first-child {
-          margin-left: 0;
+      .terminal__links {
+        flex-direction: row;
+  
+        li {
+          margin-left: 20px;
+  
+          &:first-child {
+            margin-left: 0;
+          }
         }
       }
     }
